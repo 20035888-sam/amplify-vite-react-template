@@ -1,14 +1,11 @@
-import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+import { defineAuth } from '@aws-amplify/backend';
 
-const schema = a.schema({
-  Todo: a
-    .model({
-      content: a.string().required(),
-      completed: a.boolean().default(false),
-      priority: a.string().default("medium"),
-    })
-    .authorization((allow) => [allow.owner()]),
+/**
+ * Define and configure your auth resource
+ * @see https://docs.amplify.aws/gen2/build-a-backend/auth
+ */
+export const auth = defineAuth({
+  loginWith: {
+    email: true,
+  },
 });
-
-export type Schema = typeof schema;
-export default defineData({ schema });
