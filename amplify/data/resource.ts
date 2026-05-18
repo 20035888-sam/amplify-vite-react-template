@@ -11,4 +11,4 @@ const schema = a.schema({
 });
 
 export type Schema = typeof schema;
-export default defineData({ schema });
+export const data = defineData({ schema }); // ✅ changed from export default
